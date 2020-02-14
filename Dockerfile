@@ -1,7 +1,7 @@
-FROM nginx:1.15
-LABEL MAINTAINER="Minh Bui <mibuphu@gmail.com>"
+FROM nginx:1.17-alpine
+LABEL MAINTAINER="Ya Man <3.141592654@brainterminal.eu>"
 
-ENV version 1.0.3
+ENV version 1.4.1
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends wget \
@@ -21,7 +21,7 @@ RUN apt-get update \
     && cd /tmp \
     && mkdir -p /var/www/html \
     && mkdir -p /var/www/html/automad \
-    && wget https://bitbucket.org/marcantondahmen/automad/get/${version}.tar.gz \
+    && wget https://github.com/marcantondahmen/automad/archive/${version}.tar.gz \
     && tar -xzf ${version}.tar.gz -C /var/www/html/automad --strip-components 1 \
     && rm ${version}.tar.gz \
     && chown -R nginx:nginx /var/www/html/automad \
